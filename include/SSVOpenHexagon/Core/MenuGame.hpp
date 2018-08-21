@@ -91,6 +91,7 @@ namespace hg
         float touchDelay{0.f};
 
         void refreshCamera();
+
         void initAssets();
         void initMenus();
         void initInput();
@@ -186,6 +187,7 @@ namespace hg
         MenuGame(HGAssets& mAssets, HexagonGame& mHexagonGame,
             ssvs::GameWindow& mGameWindow);
         void init();
+        void startGame();
         inline ssvs::GameState& getGame() noexcept
         {
             return game;

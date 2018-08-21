@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     {
         Config::loadConfig(overrideIds);
         auto levelOnlyAssets(mkUPtr<HGAssets>(true));
-        Online::initializeValidators(*levelOnlyAssets);
+        //Online::initializeValidators(*levelOnlyAssets);
         auto ohServer(mkUPtr<Online::OHServer>());
         ohServer->start();
         return 0;
@@ -54,13 +54,12 @@ int main(int argc, char* argv[])
 
     createProfilesFolder();
 
-    Online::initializeClient();
-    Online::tryConnectToServer();
+    //Online::initializeClient();
+    //Online::tryConnectToServer();
 
     Config::loadConfig(overrideIds);
 
-    if(Config::getServerLocal())
-        ssvu::lo("Server") << "LOCAL MODE ON" << std::endl;
+    ssvu::lo("Server") << "LOCAL MODE ON" << std::endl;
 
     GameWindow window;
     window.setTitle("Open Hexagon " + toStr(Config::getVersion()) +
@@ -76,7 +75,7 @@ int main(int argc, char* argv[])
     Config::setTimerStatic(window, Config::getTimerStatic());
 
     auto assets(mkUPtr<HGAssets>());
-    Online::initializeValidators(*assets);
+    //Online::initializeValidators(*assets);
     auto hg(mkUPtr<HexagonGame>(*assets, window));
     auto mg(mkUPtr<MenuGame>(*assets, *hg, window));
     hg->mgPtr = mg.get();
@@ -84,16 +83,22 @@ int main(int argc, char* argv[])
     assets->refreshVolumes();
     window.setGameState(mg->getGame());
     mg->init();
+
+// <-- start game immediately
+		mg->startGame();
+// -->
     window.run();
 
-    if(Online::getLoginStatus() != Online::LoginStat::Logged) Online::logout();
+    //if(Online::getLoginStatus() != Online::LoginStat::Logged) Online::logout();
 
     ssvu::lo().flush();
 
     Config::saveConfig();
     assets->pSaveCurrent();
     saveLogToFile("log.txt");
-    Online::cleanup();
+    //Online::cleanup();
+    
+
 
     return 0;
 }

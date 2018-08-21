@@ -158,7 +158,7 @@ namespace hg
         if(status.started)
         {
             if(levelStatus.swapEnabled) os << "swap enabled\n";
-            if(Config::getInvincible()) os << "invincibility on\n";
+            //if(Config::getInvincible()) os << "invincibility on\n";
             if(status.scoreInvalid)
                 os << "score invalidated (performance issues)\n";
             if(status.hasDied) os << "press r to restart\n";

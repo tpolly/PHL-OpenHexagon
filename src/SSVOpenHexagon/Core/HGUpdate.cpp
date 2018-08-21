@@ -26,7 +26,7 @@ namespace hg
         {
             status.started = true;
             messageText.setString("");
-            assets.playSound("go.ogg");
+            //assets.playSound("go.ogg");
             assets.musicPlayer.resume();
             if(Config::getOfficial()) fpsWatcher.enable();
         }
@@ -105,12 +105,12 @@ namespace hg
         {
             if(status.mustRestart)
             {
-                fpsWatcher.disable();
-                changeLevel(restartId, restartFirstTime);
-                if(!assets.pIsLocal() && Config::isEligibleForScore())
-                {
-                    Online::trySendRestart();
-                }
+                //fpsWatcher.disable();
+                //changeLevel(restartId, restartFirstTime);
+                //if(!assets.pIsLocal() && Config::isEligibleForScore())
+                //{
+                //    Online::trySendRestart();
+                //}
             }
             if(!status.scoreInvalid && Config::getOfficial() &&
                 fpsWatcher.isLimitReached())

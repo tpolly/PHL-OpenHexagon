@@ -52,6 +52,7 @@ namespace hg
         SpeedData speed, curve;
         float distance{0}, thickness{0}, hueMod{0};
         int side{0};
+        bool removed;
 
     public:
         bool killed{false};
@@ -62,12 +63,15 @@ namespace hg
 
         void update(FT mFT);
         void draw();
-
+        
+        inline void remove() noexcept
+        {
+            removed = true;
+        }
         inline void setHueMod(float mHueMod) noexcept
         {
             hueMod = mHueMod;
         }
-
         inline SpeedData& getSpeed() noexcept
         {
             return speed;
@@ -78,6 +82,8 @@ namespace hg
         }
         inline bool isOverlapping(const Vec2f& mPoint) const noexcept
         {
+        		if (removed)
+        			return false;
             return ssvs::isPointInPolygon(vertexPositions, mPoint);
         }
     };

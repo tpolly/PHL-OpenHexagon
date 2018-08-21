@@ -34,13 +34,14 @@ namespace hg
 
     void CWall::draw()
     {
+    		if (removed) return;
         auto colorMain(hexagonGame->getColorMain());
         if(hueMod != 0) colorMain = Utils::transformHue(colorMain, hueMod);
 
         for(auto i(0u); i < 4; ++i)
             hexagonGame->wallQuads.emplace_back(vertexPositions[i], colorMain);
     }
-
+    
     void CWall::update(FT mFT)
     {
         speed.update(mFT);
@@ -61,6 +62,10 @@ namespace hg
             }
         }
 
-        if(pointsOnCenter > 3) killed=true;
+        if(pointsOnCenter > 3) 
+        { 
+            killed=true;
+            removed=false;
+        }
     }
 }

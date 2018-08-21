@@ -67,13 +67,33 @@ namespace hg
         setIndex(0);
         initMenus();
         initInput();
+        
+// <-- added to start game immediately
+				assets.pSaveCurrent();
+				assets.pSetPlayingLocally(true);
+				enteredStr = "new_participant";
+				assets.pCreate(enteredStr);
+        assets.pSetCurrent(enteredStr);
+        enteredStr = "";
+        state = s::SMain;
+// -->
     }
+
+// <-- added to start game immediately
+		void MenuGame::startGame()
+		{
+        window.setGameState(hexagonGame.getGame());
+//        hexagonGame.newGame(levelDataIds[currentIndex], true, ssvu::getByModIdx(diffMults, diffMultIdx));
+//        printf("%9.6f", ssvu::getByModIdx(diffMults, diffMultIdx));
+				hexagonGame.newGame(levelDataIds[currentIndex], true, 1);
+		}
+// -->
 
     void MenuGame::init()
     {
         assets.stopMusics();
         assets.stopSounds();
-        assets.playSound("openHexagon.ogg");
+        //assets.playSound("openHexagon.ogg");
         Online::setForceLeaderboardRefresh(true);
     }
     void MenuGame::initAssets()
@@ -86,6 +106,7 @@ namespace hg
 
     void MenuGame::initMenus()
     {
+    		
         namespace i = ssvms::Items;
 
         auto whenLocal = [this]

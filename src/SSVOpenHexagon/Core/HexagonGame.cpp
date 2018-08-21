@@ -152,7 +152,7 @@ namespace hg
 
         if(!mForce && (Config::getInvincible() || levelStatus.tutorialMode))
             return;
-        assets.playSound("gameOver.ogg", SoundPlayer::Mode::Abort);
+        //assets.playSound("gameOver.ogg", SoundPlayer::Mode::Abort);
 
         if(!assets.pIsLocal() && Config::isEligibleForScore())
         {
@@ -167,16 +167,16 @@ namespace hg
         shakeCamera(effectTimelineManager, overlayCamera);
         shakeCamera(effectTimelineManager, backgroundCamera);
 
-        status.hasDied = true;
-        stopLevelMusic();
-        checkAndSaveScore();
+        //status.hasDied = true;
+        //stopLevelMusic();
+        //checkAndSaveScore();
 
         if(Config::getAutoRestart()) status.mustRestart = true;
     }
 
     void HexagonGame::incrementDifficulty()
     {
-        assets.playSound("levelUp.ogg");
+        //assets.playSound("levelUp.ogg");
 
         if(levelStatus.shouldIncrement())
         {
@@ -312,7 +312,7 @@ namespace hg
     }
     void HexagonGame::setSides(unsigned int mSides)
     {
-        assets.playSound("beep.ogg");
+        //assets.playSound("beep.ogg");
         if(mSides < 3) mSides = 3;
         levelStatus.sides = mSides;
     }
