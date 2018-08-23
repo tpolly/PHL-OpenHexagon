@@ -129,16 +129,16 @@ namespace hg
         Vec2f pLeftCheck{getOrbitRad(tempPos, angle - ssvu::piHalf, 0.01f)};
         Vec2f pRightCheck{getOrbitRad(tempPos, angle + ssvu::piHalf, 0.01f)};
 
-        for(auto& wall : hexagonGame->walls)
+        for(const auto& wall : hexagonGame->walls)
         {
             if((movement == -1 && wall.isOverlapping(pLeftCheck)) ||
                 (movement == 1 && wall.isOverlapping(pRightCheck)))
                 angle = lastAngle;
             if(wall.isOverlapping(pos))
             {
-        		    printf("#wall crushed#\n");
-        		    fflush(stdout);
-            		wall.remove();
+        		    //printf("#wall crushed#\n");
+        		    //fflush(stdout);
+            		//wall.remove();
                 deadEffectTimer.restart();
                 //if(!Config::getInvincible()) dead = true;
                 //dead = true;
