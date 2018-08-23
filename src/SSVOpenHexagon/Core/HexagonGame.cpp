@@ -28,6 +28,7 @@ namespace hg
     HexagonGame::HexagonGame(HGAssets& mAssets, GameWindow& mGameWindow)
         : assets(mAssets), window(mGameWindow), player{*this, ssvs::zeroVec2f}, fpsWatcher(window) 
     {
+    		deaths = 0;
         game.onUpdate += [this](FT mFT)
         {
             update(mFT);
@@ -145,19 +146,11 @@ namespace hg
         overlayCamera.setSkew(ssvs::Vec2f{1.f, 1.f});
         backgroundCamera.setSkew(ssvs::Vec2f{1.f, 1.f});
     }
+    
     void HexagonGame::death(bool mForce)
     {
-        fpsWatcher.disable();
+    		deaths++;
         assets.playSound("death.ogg", SoundPlayer::Mode::Abort);
-
-        if(!mForce && (Config::getInvincible() || levelStatus.tutorialMode))
-            return;
-        //assets.playSound("gameOver.ogg", SoundPlayer::Mode::Abort);
-
-        if(!assets.pIsLocal() && Config::isEligibleForScore())
-        {
-            Online::trySendDeath();
-        }
 
         status.flashEffect = 255;
         overlayCamera.setView(
@@ -166,12 +159,6 @@ namespace hg
         backgroundCamera.setCenter(ssvs::zeroVec2f);
         shakeCamera(effectTimelineManager, overlayCamera);
         shakeCamera(effectTimelineManager, backgroundCamera);
-
-        //status.hasDied = true;
-        //stopLevelMusic();
-        //checkAndSaveScore();
-
-        if(Config::getAutoRestart()) status.mustRestart = true;
     }
 
     void HexagonGame::incrementDifficulty()

@@ -29,6 +29,7 @@ namespace hg
     private:
         HGAssets& assets;
         const LevelData* levelData;
+        int deaths;
 
         ssvs::GameState game;
         ssvs::GameWindow& window;
@@ -169,6 +170,10 @@ namespace hg
         inline ssvs::GameState& getGame() noexcept
         {
             return game;
+        }
+        inline int getDeaths() noexcept
+        {
+            return deaths;
         }
         inline float getRadius() const noexcept
         {

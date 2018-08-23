@@ -30,6 +30,7 @@ namespace hg
         vertexPositions[3] = getOrbitRad(centerPos,
             angle - div + hexagonGame->getWallAngleRight(),
             distance + thickness + hexagonGame->getWallSkewRight());
+        removed = false;
     }
 
     void CWall::draw()

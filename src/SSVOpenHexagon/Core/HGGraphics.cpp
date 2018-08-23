@@ -152,6 +152,8 @@ namespace hg
             os << "tutorial mode\n";
         else if(Config::getOfficial())
             os << "official mode\n";
+            
+        os << "deaths: " << toStr(getDeaths()) << "\n";
 
         if(Config::getDebug()) os << "debug mode\n";
 
