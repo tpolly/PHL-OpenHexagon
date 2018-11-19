@@ -299,7 +299,7 @@ namespace hg
     }
     void HexagonGame::setSides(unsigned int mSides)
     {
-        //assets.playSound("beep.ogg");
+        assets.playSound("beep.ogg");
         if(mSides < 3) mSides = 3;
         levelStatus.sides = mSides;
     }

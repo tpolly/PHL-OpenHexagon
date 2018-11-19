@@ -1,3 +1,12 @@
+# This is a patched version of Open Hexagon to use in a user study.
+
+Original: https://github.com/SuperV1234/SSVOpenHexagon
+Patch file to replay the changes: phl-patch.patch
+
+This directory is already configured for building on Debian Linux. You may need to reconfigure.
+
+
+
 ## [Open Hexagon 2.0](http://www.facebook.com/OpenHexagon) - [by Vittorio Romeo](http://vittorioromeo.info)
 
 ---
