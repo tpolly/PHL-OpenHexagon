@@ -1,4 +1,4 @@
-# This is a patched version of Open Hexagon to use in a user study.
+This repository contains software that was used in the study "Reevaluating Passive Haptic Learning of Morse Code" (https://doi.org/10.1145/3341163.3347714). In particular, this is a patched version of the game Open Hexagon. The game was adapted to start immediately without menu, the level was customized to run indefinitely and wall hits no longer end the game, but instead are counted as negative score and outputted to stdout.
 
 Original: https://github.com/SuperV1234/SSVOpenHexagon
 Patch file to replay the changes: phl-study-changes.patch
@@ -6,6 +6,8 @@ Patch file to replay the changes: phl-study-changes.patch
 This directory is already configured for building on Debian Linux. You may need to reconfigure.
 
 
+
+Original README:
 
 ## [Open Hexagon 2.0](http://www.facebook.com/OpenHexagon) - [by Vittorio Romeo](http://vittorioromeo.info)
 
